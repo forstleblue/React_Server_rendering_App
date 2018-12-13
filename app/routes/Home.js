@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -8,4 +9,5 @@ class Home extends Component {
     return <h1>Hello World</h1>
   }
 }
+
 export default Home
