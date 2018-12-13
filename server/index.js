@@ -4,7 +4,7 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var app = express()
 var webpack = require('webpack')
-var middleware = require('../app/middleware')
+var serverRendering = require('../app/serverRendering')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json.
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(express.static(path.resolve(__dirname, 'app')))
 }
 
-app.get('*', middleware)
+app.get('*', serverRendering)
 
 //Finally starting the listener
 app.listen(3000, err => {
