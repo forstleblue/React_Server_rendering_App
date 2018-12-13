@@ -1,13 +1,14 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './reducers';
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { StaticRouter } from 'react-router'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducers from './reducers'
+import App from './containers/AppContainer'
 
-module.exports = function (req, res){
-	if(process.env.NODE_ENV === 'development') {
-		res.send(`
+module.exports = function(req, res) {
+  if (process.env.NODE_ENV === 'development') {
+    res.send(`
 			<!doctype html>
 			<html>
 				<head>
@@ -19,9 +20,9 @@ module.exports = function (req, res){
 					<script src='/bundle.js'></script>
 				</body>
 			</html>
-		`);
-	} else if(process.env.NODE_ENV === 'production') {
-		res.send(`
+		`)
+  } else if (process.env.NODE_ENV === 'production') {
+    res.send(`
 			<!doctype html>
 			<html>
 				<head>
@@ -30,15 +31,15 @@ module.exports = function (req, res){
 				</head>
 				<body>
 					<div id='app'>${renderToString(
-						<Provider store={createStore(reducers)}>
-							<StaticRouter location={req.url} context={{}}>
-								<App />
-							</StaticRouter>
-						</Provider>
-					)}</div>
+            <Provider store={createStore(reducers)}>
+              <StaticRouter location={req.url} context={{}}>
+                <App />
+              </StaticRouter>
+            </Provider>,
+          )}</div>
 					<script src='bundle.js'></script>
 				</body>
 			</html>
-		`);
-	}
-};
+		`)
+  }
+}
