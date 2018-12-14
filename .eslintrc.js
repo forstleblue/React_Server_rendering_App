@@ -41,7 +41,7 @@ module.exports = {
     'react/no-direct-mutation-state': 1,
   },
   settings: {
-    react: { 'version': '15.2.1' },
+    react: { 'version': '16.6.3' },
     'import/resolver': {
       webpack: {
         config: './webpack.config.js',
