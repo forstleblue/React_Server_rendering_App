@@ -44,7 +44,7 @@ module.exports = {
     react: { 'version': '15.2.1' },
     'import/resolver': {
       webpack: {
-        config: './webpack.config.dev.js',
+        config: './webpack.config.js',
       },
     },
     flowtype: {
